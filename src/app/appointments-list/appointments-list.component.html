@@ -1,0 +1,46 @@
+<div class="mt-2">
+    <a (click)="exportToPdf()" class="btn btn-outline-danger me-2">Export To PDF</a>
+    <a (click)="exportToExcel()" class="btn btn-outline-success me-2">Export To Excel</a>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Patient Name</th>
+                <th>Anamal Type</th>
+                <th>Owner Name</th>
+                <th>Owner Surname</th>
+                <th>Owner Contract Number</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Appointment Duration</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appointment of appointments">
+                <td>{{ appointment.appointmentId }}</td>
+                <td>{{ appointment.patientName }}</td>
+                <td>{{ appointment.animalType }}</td>
+                <td>{{ appointment.ownerName }}</td>
+                <td>{{ appointment.ownerSurname }}</td>
+                <td>{{ appointment.ownerContactNumber }}</td>
+                <td>{{ appointment.appointmentDate }}</td>
+                <td>{{ appointment.appointmentTime }}</td>
+                <td>{{ appointment.appointmentDuration }} mins</td>
+                <td>
+                    <a [routerLink]="['/view/', appointment.appointmentId]" class="btn btn-outline-primary">View</a>
+                </td>
+                <td><a [routerLink]="['/appointments/', appointment.appointmentId]" class="btn btn-outline-warning">Update</a>
+                </td>
+                <td>
+                    <a (click)="deleteApplication(appointment.appointmentId)" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

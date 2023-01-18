@@ -1,0 +1,48 @@
+<div class="card" *ngIf="appointment != null">
+    <div class="card-header">Product ID: {{ appointment.appointmentId }}</div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Patient Name:</div>
+            <div class="col-md-10">{{ appointment.patientName }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Animal Type:</div>
+            <div class="col-md-10">{{ appointment.animalType }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">Owner Name:</div>
+            <div class="col-md-10">{{ appointment.ownerName }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Owner Surname:</div>
+            <div class="col-md-10">{{ appointment.ownerSurname }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Owner Contract Number:</div>
+            <div class="col-md-10">{{ appointment.ownerContactNumber }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Appointment Date:</div>
+            <div class="col-md-10">{{ appointment.appointmentDate }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Appointment Time:</div>
+            <div class="col-md-10">
+                <div class="col-md-10">{{ appointment.appointmentTime }}</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Appointment Duration:</div>
+            <div class="col-md-10">
+                <div class="col-md-10">{{ appointment.appointmentDuration }} mins</div>
+            </div>
+        </div>
+    </div>
+</div>

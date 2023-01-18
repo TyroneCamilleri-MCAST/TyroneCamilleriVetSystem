@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">{{ pageTitle }}</a>
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a routerLink="/appointments" class="nav-link">Appointment List</a>
+        </li>
+        <li class="nav-item" *ngIf="getRole() != 'VET' && isAuthenticate() == 'true'">
+            <a routerLink="/add" class="nav-link">Appointment Add</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticate() == 'false'">
+            <a routerLink="/authenticate" class="nav-link" *ngIf="isAuthenticate() == 'false'">Sign In</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav float-end offset-5 active" *ngIf="isAuthenticate() == 'true'">
+        <a (click)="signOut()" class="nav-item">Hello {{getValue ()}}</a>
+    </ul>
+</nav>
+
+<div class="mt-2">
+    <router-outlet></router-outlet>
+</div>

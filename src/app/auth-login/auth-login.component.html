@@ -1,0 +1,20 @@
+<div class="alert alert-danger" *ngIf="loginFailed">
+    <p>Login failed</p>
+</div>
+
+<div class="card-body mt-3">
+    <form novalidate [formGroup]="LoginForm" (ngSubmit)="signIn()" class="row g-3">
+        <div class="col-md-6 offset-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username..." />
+        </div>
+        <div class="col-md-6 offset-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password..." />
+        </div>
+
+        <div class="col-md-6 offset-3">
+            <button class="btn btn-success col-md-12 p-2" type="submit">Sign In</button>
+        </div>
+    </form>
+</div>

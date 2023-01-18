@@ -1,0 +1,56 @@
+<form novalidate [formGroup]="appointmentForm" (ngSubmit)="updateAppointment()" class="row g-3">
+    <div class="col-md-6">
+        <label for="patientName" class="form-label">Patient name</label>
+        <input type="text" formControlName="patientName" class="form-control" id="patientName" placeholder="Patient Name" />
+    </div>
+    <div class="col-md-6">
+        <label for="animalType" class="form-label">Animal Type</label>
+        <select formControlName="animalType" class="form-select" id="animalType">
+            <option *ngFor="let animal of animals" [value]="animal">{{animal}}</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="ownerIdCardNumber" class="form-label">Owner Id Card Number</label>
+        <input type="text" formControlName="ownerIdCardNumber" class="form-control" id="ownerIdCardNumber" placeholder="Owner Id Card Number" />
+    </div>
+    <div class="col-md-3">
+        <label for="ownerName" class="form-label">Owner Name</label>
+        <input type="text" formControlName="ownerName" class="form-control" id="ownerName" placeholder="Owner Name" />
+    </div>
+    <div class="col-md-3">
+        <label for="ownerSurname" class="form-label">Owner Surname</label>
+        <input type="text" formControlName="ownerSurname" class="form-control" id="ownerSurname" placeholder="Owner Surname" />
+    </div>
+    <div class="col-md-3">
+        <label for="ownerContactNumber" class="form-label">Owner Contact Number</label>
+        <input type="tel" formControlName="ownerContactNumber" class="form-control" id="ownerContactNumber" placeholder="Owner Contact Number" />
+    </div>
+    <div class="col-md-4">
+        <label for="appointmentDate" class="form-label">Appointment Date</label>
+        <input type="date" formControlName="appointmentDate" class="form-control" id="appointmentDate" />
+    </div>
+    <div class="col-md-4">
+        <label for="appointmentTime" class="form-label">Appointment Time</label>
+        <input type="time" formControlName="appointmentTime" class="form-control" id="appointmentTime" />
+    </div>
+    <div class="col-md-4">
+        <label for="appointmentDuration" class="form-label">Appointment Duration:</label>
+        <select formControlName="appointmentDuration" class="form-select" id="appointmentDuration">
+            <option *ngFor="let duration of durations; let i = index" [ngValue]="duration.value">
+                {{ duration.name }}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-12">
+        <label for="reasonForAppointment" class="form-label">Reason For Appointment</label>
+        <textarea rows="3" formControlName="reasonForAppointment" class="form-control" id="reasonForAppointment" placeholder="Appointment reason..."></textarea>
+    </div>
+    <div class="col-md-12" *ngIf="vetNotesAllowed">
+        <label for="vetNotes" class="form-label">Vet Notes</label>
+        <textarea rows="3" formControlName="vetNotes" class="form-control" id="vetNotes" placeholder="Some notes that the veteranian needs to know..."></textarea>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-success col-md-12 p-2" type="submit">Submit form</button>
+    </div>
+</form>

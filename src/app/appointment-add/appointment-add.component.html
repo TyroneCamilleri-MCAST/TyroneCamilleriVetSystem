@@ -1,0 +1,119 @@
+<form novalidate [formGroup]="appointmentForm" (ngSubmit)="addAppointment()" class="row g-3">
+    <div class="col-md-6">
+        <label for="patientName" class="form-label">Patient name</label>
+        <input type="text" formControlName="patientName" class="form-control" id="patientName" placeholder="Patient Name" />
+        <div *ngIf="patientName?.invalid && (patientName?.dirty || patientName?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="patientName?.errors?.['required']">
+                Patient name is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="animalType" class="form-label">Animal Type</label>
+        <select formControlName="animalType" class="form-select" id="animalType">
+            <option *ngFor="let animal of animals" [value]="animal">{{animal}}</option>
+        </select>
+        <div *ngIf="animalType?.invalid && (animalType?.dirty || animalType?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="animalType?.errors?.['required']">
+                Animal type is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="ownerIdCardNumber" class="form-label">Owner Id Card Number</label>
+        <input type="text" formControlName="ownerIdCardNumber" class="form-control" id="ownerIdCardNumber" placeholder="Owner Id Card Number" />
+        <div *ngIf="ownerIdCardNumber?.invalid && (ownerIdCardNumber?.dirty || ownerIdCardNumber?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="ownerIdCardNumber?.errors?.['required']">
+                Owner Id Card Number is required.
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="ownerIdCardNumber?.errors?.['pattern']">
+                Owner Id Card Number is invalid.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="ownerName" class="form-label">Owner Name</label>
+        <input type="text" formControlName="ownerName" class="form-control" id="ownerName" placeholder="Owner Name" />
+        <div *ngIf="ownerName?.invalid && (ownerName?.dirty || ownerName?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="ownerName?.errors?.['required']">
+                Owner Name is required.
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="ownerName?.errors?.['minlength']">
+                Owner Name needs to be 2 or more characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="ownerSurname" class="form-label">Owner Surname</label>
+        <input type="text" formControlName="ownerSurname" class="form-control" id="ownerSurname" placeholder="Owner Surname" />
+        <div *ngIf="ownerSurname?.invalid && (ownerSurname?.dirty || ownerSurname?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="ownerSurname?.errors?.['required']">
+                Owner Surname is required.
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="ownerSurname?.errors?.['minlength']">
+                Owner Surname needs to be 2 or more characters.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label for="ownerContactNumber" class="form-label">Owner Contact Number</label>
+        <input type="tel" formControlName="ownerContactNumber" class="form-control" id="ownerContactNumber" placeholder="Owner Contact Number" />
+        <div *ngIf="ownerContactNumber?.invalid && (ownerContactNumber?.dirty || ownerContactNumber?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="ownerContactNumber?.errors?.['required']">
+                Owner Contact Number is required.
+            </div>
+            <div class="invalid-feedback d-block" *ngIf="ownerContactNumber?.errors?.['pattern']">
+                Owner contact number is invalid.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="appointmentDate" class="form-label">Appointment Date</label>
+        <input type="date" formControlName="appointmentDate" class="form-control" id="appointmentDate" required />
+        <div *ngIf="appointmentDate?.invalid && (appointmentDate?.dirty || appointmentDate?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="appointmentDate?.errors?.['required']">
+                Appointment Date is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="appointmentTime" class="form-label">Appointment Time</label>
+        <input type="time" formControlName="appointmentTime" class="form-control" id="appointmentTime" />
+        <div *ngIf="appointmentTime?.invalid && (appointmentTime?.dirty || appointmentTime?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="appointmentTime?.errors?.['required']">
+                Appointment time is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="appointmentDuration" class="form-label">Appointment Duration:</label>
+        <select formControlName="appointmentDuration" class="form-select" id="appointmentDuration">
+            <option *ngFor="let duration of durations; let i = index" [ngValue]="duration.value">
+                {{ duration.name }}
+            </option>
+        </select>
+        <div *ngIf="appointmentDuration?.invalid && (appointmentDuration?.dirty || appointmentDuration?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="appointmentDuration?.errors?.['required']">
+                Appointment Duration is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="reasonForAppointment" class="form-label">Reason For Appointment</label>
+        <textarea rows="3" formControlName="reasonForAppointment" class="form-control" id="reasonForAppointment" placeholder="Appointment reason..."></textarea>
+        <div *ngIf="reasonForAppointment?.invalid && (reasonForAppointment?.dirty || reasonForAppointment?.touched)" class="alert">
+            <div class="invalid-feedback d-block" *ngIf="reasonForAppointment?.errors?.['required']">
+                Reason for appointment is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" *ngIf="">
+        <label for="vetNotes" class="form-label">Vet Notes</label>
+        <textarea rows="3" formControlName="vetNotes" class="form-control" id="vetNotes" placeholder="Some notes that the veteranian needs to know..."></textarea>
+    </div>
+
+    <div class="text-center">
+        <button [disabled]="!this.appointmentForm.valid" class="btn btn-success col-md-12 p-2" type="submit">Submit
+            form</button>
+    </div>
+</form>
